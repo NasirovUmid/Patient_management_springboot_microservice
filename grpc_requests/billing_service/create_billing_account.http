@@ -1,0 +1,10 @@
+### GRPC request to example server
+GRPC localhost:9091/BillingService/CreateBillingAccount
+
+{
+  "patientId" : "126",
+  "name" : "juDD",
+  "email" : "jf@gmail.com"
+}
+
+###

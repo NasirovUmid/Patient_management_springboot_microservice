@@ -1,0 +1,42 @@
+server:
+  port: 8084
+
+spring:
+  cloud:
+    gateway:
+      routes:
+          ## http://localhost:8084/auth/login
+          ## API GATEWAY -> http://localhost:8085/login
+
+        - id: auth-service-route
+          uri: http://auth-service:8085
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+
+            ## for /api/patient/** to patient-service
+        - id: patient-service-route
+          uri: http://patient-service:8080
+          predicates:
+           - Path=/api/patients/**
+          filters:
+           - StripPrefix=1
+           - JwtValidation
+                            ## API GATEWAY -> http://patient_service:8080/patients
+                            ## PATIENT SERVICE (SPRING BOOT) -> /patients -> Patients Array
+        - id: api-docs-patient-route
+          uri: http://patient-service:8080
+          predicates:
+            - Path=/api-docs/patients
+          filters:
+            - RewritePath=/api-docs/patients,/v3/api-docs
+
+                            ## REST-CLIENT -> http://localhost:8080/api-docs/patients
+
+        - id: api-docs-auth-route
+          uri: http://auth-service:8085
+          predicates:
+           - Path=/api-docs/auth
+          filters:
+            - RewritePath=/api-docs/auth,/v3/api-docs

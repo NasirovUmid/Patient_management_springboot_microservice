@@ -1,0 +1,13 @@
+### PUT request to example server
+PUT http://localhost:8080/patients/update/c2381041-1b21-4999-8d34-94920980ea3f
+Content-Type: application/json
+
+{
+"name": "Nihil JNss",
+"email": "nihil11@gmail.com",
+"address": "12777 streeet Africa",
+"birthDate": "1779-01-01",
+"registeredDate": "2001-01-01"
+
+}
+###

@@ -1,0 +1,15 @@
+### POST request to example server
+POST http://localhost:8080/patients
+Content-Type: application/json
+
+{
+  "name": "Analytics service -  Test",
+  "email": "Analytics_TEST@gmail.com",
+  "address": "1d25ds55 street YanSDSam",
+  "birthDate": "2003-01-01",
+  "registeredDate": "2101-01-01"
+
+}
+
+
+###
